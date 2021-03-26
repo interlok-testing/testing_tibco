@@ -1,0 +1,191 @@
+<adapter>
+  <unique-id>tibco-testing</unique-id>
+  <start-up-event-imp>com.adaptris.core.event.StandardAdapterStartUpEvent</start-up-event-imp>
+  <heartbeat-event-imp>com.adaptris.core.HeartbeatEvent</heartbeat-event-imp>
+  <shared-components>
+    <connections>
+      <jms-connection>
+        <unique-id>tibco</unique-id>
+        <user-name>admin</user-name>
+        <password>admin</password>
+        <vendor-implementation class="basic-tibco-ems-implementation">
+          <broker-url>tcp://localhost:7222</broker-url>
+        </vendor-implementation>
+      </jms-connection>
+    </connections>
+    <services/>
+  </shared-components>
+  <event-handler class="default-event-handler">
+    <unique-id>DefaultEventHandler</unique-id>
+    <connection class="null-connection">
+      <unique-id>agitated-einstein</unique-id>
+    </connection>
+    <producer class="null-message-producer">
+      <unique-id>romantic-bartik</unique-id>
+    </producer>
+  </event-handler>
+  <message-error-handler class="null-processing-exception-handler">
+    <unique-id>silly-dijkstra</unique-id>
+  </message-error-handler>
+  <failed-message-retrier class="no-retries">
+    <unique-id>jolly-ptolemy</unique-id>
+  </failed-message-retrier>
+  <channel-list>
+    <channel>
+      <consume-connection class="shared-connection">
+        <lookup-name>tibco</lookup-name>
+      </consume-connection>
+      <produce-connection class="shared-connection">
+        <lookup-name>tibco</lookup-name>
+      </produce-connection>
+      <workflow-list>
+        <standard-workflow>
+          <consumer class="jms-consumer">
+            <unique-id>compassionate-aryabhata</unique-id>
+            <acknowledge-mode>CLIENT_ACKNOWLEDGE</acknowledge-mode>
+            <message-translator class="auto-convert-message-translator">
+              <jms-output-type>Text</jms-output-type>
+            </message-translator>
+            <endpoint>jms:queue:Sample.Q1</endpoint>
+          </consumer>
+          <service-collection class="service-list">
+            <unique-id>elastic-booth</unique-id>
+            <services/>
+          </service-collection>
+          <producer class="jms-producer">
+            <unique-id>gigantic-davinci</unique-id>
+            <acknowledge-mode>CLIENT_ACKNOWLEDGE</acknowledge-mode>
+            <message-translator class="text-message-translator"/>
+            <delivery-mode>PERSISTENT</delivery-mode>
+            <session-factory class="jms-default-producer-session"/>
+            <endpoint>jms:queue:Sample.Q2</endpoint>
+          </producer>
+          <produce-exception-handler class="null-produce-exception-handler"/>
+          <unique-id>grave-heyrovsky</unique-id>
+          <message-metrics-interceptor>
+            <unique-id>grave-heyrovsky-MessageMetrics</unique-id>
+            <timeslice-duration>
+              <unit>MINUTES</unit>
+              <interval>5</interval>
+            </timeslice-duration>
+            <timeslice-history-count>12</timeslice-history-count>
+          </message-metrics-interceptor>
+          <in-flight-workflow-interceptor>
+            <unique-id>grave-heyrovsky-InFlight</unique-id>
+          </in-flight-workflow-interceptor>
+        </standard-workflow>
+        <standard-workflow>
+          <consumer class="jms-consumer">
+            <unique-id>mad-mirzakhani</unique-id>
+            <acknowledge-mode>CLIENT_ACKNOWLEDGE</acknowledge-mode>
+            <message-translator class="auto-convert-message-translator">
+              <jms-output-type>Text</jms-output-type>
+            </message-translator>
+            <endpoint>jms:queue:Sample.Q2</endpoint>
+          </consumer>
+          <service-collection class="service-list">
+            <unique-id>jolly-lamport</unique-id>
+            <services/>
+          </service-collection>
+          <producer class="jms-producer">
+            <unique-id>adoring-curie</unique-id>
+            <acknowledge-mode>CLIENT_ACKNOWLEDGE</acknowledge-mode>
+            <message-translator class="text-message-translator"/>
+            <delivery-mode>PERSISTENT</delivery-mode>
+            <session-factory class="jms-default-producer-session"/>
+            <endpoint>jms:topic:Sample.T1</endpoint>
+          </producer>
+          <produce-exception-handler class="null-produce-exception-handler"/>
+          <unique-id>clever-goldberg</unique-id>
+          <message-metrics-interceptor>
+            <unique-id>clever-goldberg-MessageMetrics</unique-id>
+            <timeslice-duration>
+              <unit>MINUTES</unit>
+              <interval>5</interval>
+            </timeslice-duration>
+            <timeslice-history-count>12</timeslice-history-count>
+          </message-metrics-interceptor>
+          <in-flight-workflow-interceptor>
+            <unique-id>clever-goldberg-InFlight</unique-id>
+          </in-flight-workflow-interceptor>
+        </standard-workflow>
+        <standard-workflow>
+          <consumer class="jms-consumer">
+            <unique-id>fervent-yonath</unique-id>
+            <acknowledge-mode>CLIENT_ACKNOWLEDGE</acknowledge-mode>
+            <message-translator class="auto-convert-message-translator">
+              <jms-output-type>Text</jms-output-type>
+            </message-translator>
+            <endpoint>jms:topic:Sample.T1</endpoint>
+          </consumer>
+          <service-collection class="service-list">
+            <unique-id>gloomy-roentgen</unique-id>
+            <services/>
+          </service-collection>
+          <producer class="jms-producer">
+            <unique-id>zen-borg</unique-id>
+            <acknowledge-mode>CLIENT_ACKNOWLEDGE</acknowledge-mode>
+            <message-translator class="text-message-translator"/>
+            <delivery-mode>PERSISTENT</delivery-mode>
+            <session-factory class="jms-default-producer-session"/>
+            <endpoint>jms:topic:Sample.T2</endpoint>
+          </producer>
+          <produce-exception-handler class="null-produce-exception-handler"/>
+          <unique-id>thirsty-lichterman</unique-id>
+          <message-metrics-interceptor>
+            <unique-id>thirsty-lichterman-MessageMetrics</unique-id>
+            <timeslice-duration>
+              <unit>MINUTES</unit>
+              <interval>5</interval>
+            </timeslice-duration>
+            <timeslice-history-count>12</timeslice-history-count>
+          </message-metrics-interceptor>
+          <in-flight-workflow-interceptor>
+            <unique-id>thirsty-lichterman-InFlight</unique-id>
+          </in-flight-workflow-interceptor>
+        </standard-workflow>
+        <standard-workflow>
+          <consumer class="polling-trigger">
+            <unique-id>agitated-snyder</unique-id>
+            <poller class="fixed-interval-poller">
+              <poll-interval>
+                <unit>SECONDS</unit>
+                <interval>10</interval>
+              </poll-interval>
+            </poller>
+          </consumer>
+          <service-collection class="service-list">
+            <unique-id>ecstatic-swanson</unique-id>
+            <services/>
+          </service-collection>
+          <producer class="jms-producer">
+            <unique-id>trusting-hoover</unique-id>
+            <acknowledge-mode>CLIENT_ACKNOWLEDGE</acknowledge-mode>
+            <message-translator class="text-message-translator"/>
+            <delivery-mode>PERSISTENT</delivery-mode>
+            <session-factory class="jms-default-producer-session"/>
+            <endpoint>jms:queue:Sample.Q1</endpoint>
+          </producer>
+          <produce-exception-handler class="null-produce-exception-handler"/>
+          <unique-id>mad-ritchie</unique-id>
+          <message-metrics-interceptor>
+            <unique-id>mad-ritchie-MessageMetrics</unique-id>
+            <timeslice-duration>
+              <unit>MINUTES</unit>
+              <interval>5</interval>
+            </timeslice-duration>
+            <timeslice-history-count>12</timeslice-history-count>
+          </message-metrics-interceptor>
+          <in-flight-workflow-interceptor>
+            <unique-id>mad-ritchie-InFlight</unique-id>
+          </in-flight-workflow-interceptor>
+        </standard-workflow>
+      </workflow-list>
+      <unique-id>infallible-yonath</unique-id>
+    </channel>
+  </channel-list>
+  <message-error-digester class="standard-message-error-digester">
+    <unique-id>ErrorDigest</unique-id>
+    <digest-max-size>100</digest-max-size>
+  </message-error-digester>
+</adapter>

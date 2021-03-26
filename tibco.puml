@@ -1,0 +1,19 @@
+```plantuml
+@startuml
+skinparam componentStyle rectangle
+
+package "Tibco EMS" as Tibco {
+  [Sample.Q1]
+  [Sample.Q2]
+  [Sample.T1]
+  [Sample.T2]
+}
+
+node "INTERLOK" as INTERLOK {
+  [JMS]
+}
+
+JMS --> Tibco
+Tibco --> JMS
+@enduml
+```

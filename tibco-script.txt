@@ -1,0 +1,4 @@
+create topic Sample.T1
+create topic Sample.T2
+create queue Sample.Q1
+create queue Sample.Q2

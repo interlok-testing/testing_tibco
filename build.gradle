@@ -1,0 +1,44 @@
+plugins {
+  // https://github.com/nemerosa/versioning
+  id 'net.nemerosa.versioning' version '2.14.0'
+}
+
+ext {
+  interlokParentGradle = "https://raw.githubusercontent.com/adaptris-labs/interlok-build-parent/master/build.gradle"
+  interlokVersion = '4.0-SNAPSHOT'
+
+  nexusBaseUrl  = 'https://nexus.adaptris.net'
+  
+  includeWar='true'
+}
+
+repositories {
+    mavenCentral() {
+      content {
+        excludeGroupByRegex "com\\.adaptris.*"
+      }
+    }
+	maven {
+      credentials {
+        username repoUsername
+        password repoPassword
+      }
+      url "$nexusBaseUrl/nexus/content/groups/private"
+    }
+    maven { url "${nexusBaseUrl}/nexus/content/groups/public" }
+    maven { url "${nexusBaseUrl}/nexus/content/groups/interlok" }
+}
+
+allprojects {
+  apply from: "${interlokParentGradle}"
+  // specify the version of the configuration.
+  version=versioning.info.full
+}
+
+
+
+dependencies {
+  interlokRuntime ("com.adaptris:interlok-tibco:$interlokVersion") { changing=true }
+
+  interlokJavadocs group: "com.adaptris", name: "interlok-tibco", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+}
