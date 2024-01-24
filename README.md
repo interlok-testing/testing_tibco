@@ -1,5 +1,8 @@
 # Tibco Testing
 
+[![license](https://img.shields.io/github/license/interlok-testing/testing_tibco.svg)](https://github.com/interlok-testing/testing_tibco/blob/develop/LICENSE)
+[![Actions Status](https://github.com/interlok-testing/testing_tibco/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/interlok-testing/testing_tibco/actions/workflows/gradle-build.yml)
+
 Project tests interlok-tibco features
 
 ## What it does
